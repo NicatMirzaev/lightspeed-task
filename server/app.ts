@@ -1,7 +1,13 @@
-import express, { Express, Request, Response } from "express";
+import express, {
+  Express,
+  Request,
+  Response,
+} from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+
+import "dotenv/config";
 
 import apiRouter from "./src/routes";
 
@@ -16,14 +22,22 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  express.static(
+    path.join(__dirname, "public")
+  )
+);
 
 app.get("/", (_, res: Response) => {
-  res.send("Express + TypeScript Server");
+  res.send(
+    "Express + TypeScript Server"
+  );
 });
 
 app.use("/api", apiRouter);
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+  console.log(
+    `[server]: Server is running at http://localhost:${port}`
+  );
 });
