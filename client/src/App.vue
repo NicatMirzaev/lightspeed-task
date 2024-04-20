@@ -1,30 +1,30 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <Navbar :goToCheckout="goToCheckout" />
+  <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navbar from "./components/Navbar";
+import Ecommerce from "@ecwid/sdk";
 
-nav {
-  padding: 30px;
-}
+const ecommerce = new Ecommerce({
+  storeId: 101560752,
+  storeLocationPath: "/store",
+});
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: "App",
+  components: {
+    Navbar,
+  },
+  methods: {
+    goToCheckout() {
+      ecommerce.cart.goToCheckout("/store/");
+    },
+  },
+};
+</script>

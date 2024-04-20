@@ -9,3 +9,8 @@ export interface Product {
     height: number;
   };
 }
+
+export interface ProductResponse {
+  count: number;
+  items: Product[];
+}
