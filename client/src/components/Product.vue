@@ -1,6 +1,6 @@
 <template>
   <div class="product-container">
-    <div class="a-card">
+    <div class="a-card product-card">
       <div class="product-thumbnail product-thumbnail--large">
         <div
           class="gwt-Label product-placeholder colored-background-6"
@@ -10,9 +10,9 @@
       </div>
       <div class="product-body">
         <h5 class="text-center">{{ title }}</h5>
-        <div class="text-default text-center muted">{{ price }}</div>
-        <button class="btn btn-primary">Buy now</button>
+        <div class="text-default text-center muted">${{ price }}</div>
       </div>
+      <button class="btn btn-primary">Buy now</button>
     </div>
   </div>
 </template>
@@ -29,11 +29,20 @@ export default {
 </script>
 <style>
 .product-thumbnail.product-thumbnail--large {
-  width: 191px;
+  width: 100%;
   height: 200px;
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 384px;
+  max-height: 384px;
 }
 .product-container {
   width: 200px;
+  height: 384px;
+  max-height: 384px;
   cursor: pointer;
 }
 .product-body {
