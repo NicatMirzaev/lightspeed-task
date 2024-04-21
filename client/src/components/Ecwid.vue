@@ -35,6 +35,18 @@ function injectEcwidProductBrowser(storeId) {
     "searchView=list",
     `id=my-store-${storeId}`,
   );
+  window.Ecwid.OnPageLoaded.add(function (page) {
+    if (page.type === "CART") {
+      const footerElement = document.querySelector(".ec-footer");
+      const parentElement = footerElement.parentElement;
+
+      // Create the component element
+      const componentElement = document.createElement("product-item");
+
+      // Insert the component before the footer element
+      parentElement.insertBefore(componentElement, footerElement);
+    }
+  });
 }
 
 export default {
