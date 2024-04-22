@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { renderComponent } from "../utils/renderComponent";
+
 function injectEcwidScript(storeId, categoryId) {
   window.ec = window.ec || {};
   window.ec.config = window.ec.config || {};
@@ -41,7 +43,9 @@ function injectEcwidProductBrowser(storeId) {
       const parentElement = footerElement.parentElement;
 
       // Create the component element
-      const componentElement = document.createElement("product-item");
+      const componentElement = document.createElement("div");
+
+      renderComponent(componentElement, {});
 
       // Insert the component before the footer element
       parentElement.insertBefore(componentElement, footerElement);
