@@ -1,5 +1,5 @@
 <template>
-  <Navbar :goToCheckout="goToCheckout" />
+  <Navbar />
   <router-view v-slot="{ Component }">
     <keep-alive>
       <component :is="Component" />
@@ -9,22 +9,16 @@
 
 <script>
 import Navbar from "./components/Navbar";
-import Ecommerce from "@ecwid/sdk";
-
-const ecommerce = new Ecommerce({
-  storeId: 101560752,
-  storeLocationPath: "/store",
-});
 
 export default {
   name: "App",
   components: {
     Navbar,
   },
-  methods: {
-    goToCheckout() {
-      ecommerce.cart.goToCheckout("/store/");
-    },
-  },
 };
 </script>
+<style>
+.ec-footer {
+  display: none;
+}
+</style>

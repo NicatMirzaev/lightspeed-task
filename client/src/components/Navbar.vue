@@ -5,7 +5,20 @@
     </div>
     <ul class="nav-links">
       <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/store">Store</router-link></li>
+      <li>
+        <span
+          @click="goToStore"
+          :class="{ 'active-link': $route.path === '/store' }"
+          >Store</span
+        >
+      </li>
+      <li>
+        <span
+          @click="goToAccount"
+          :class="{ 'active-link': $route.path === '/store/account' }"
+          >Account</span
+        >
+      </li>
       <div
         data-layout="SMALL_ICON_COUNTER"
         class="ec-cart-widget"
@@ -16,12 +29,30 @@
 </template>
 
 <script>
+import Ecommerce from "@ecwid/sdk";
+
+const ecommerce = new Ecommerce({
+  storeId: 101560752,
+  storeLocationPath: "/store",
+});
+
 export default {
   name: "navbar-item",
-  props: {
-    goToCheckout: {
-      type: Function,
-      required: true,
+  methods: {
+    goToCheckout() {
+      ecommerce.cart.goToCheckout("/store/");
+    },
+    goToAccount() {
+      if (window.Ecwid) {
+        window.Ecwid.openPage("account/settings");
+      }
+      this.$router.push("/store/account");
+    },
+    goToStore() {
+      if (window.Ecwid) {
+        window.Ecwid.openPage("category", { id: 0 });
+      }
+      this.$router.push("/store");
     },
   },
 };
@@ -51,8 +82,21 @@ export default {
 .nav-links li:last-child {
   margin-right: 0;
 }
-.nav-links a {
+.nav-links > li > span {
+  display: inline-block;
+  padding: 0 1.1em 0;
+  color: #0a1c2e;
+  font-size: 0.875em;
+  line-height: 1.36em;
   text-decoration: none;
-  color: #333;
+  transition:
+    color 0.1s linear,
+    border-color 0.1s linear;
+}
+.nav-links > li > span:hover {
+  color: #1b409d;
+}
+.active-link {
+  color: #1b409d !important;
 }
 </style>

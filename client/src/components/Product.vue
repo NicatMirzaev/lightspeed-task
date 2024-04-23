@@ -26,9 +26,8 @@ export default {
 <style>
 .product-image {
   object-fit: cover;
-  width: 100% !important;
-  height: auto !important;
-  margin-bottom: 5px !important;
+  width: 100%;
+  height: auto;
 }
 .product-card {
   display: flex;
@@ -46,9 +45,7 @@ export default {
     0 1px 4px -1px rgba(15, 17, 22, 0.1),
     0 0 0 rgba(0, 0, 0, 0.08) inset !important;
 }
-.product-container * {
-  min-height: auto !important;
-}
+
 .product-body {
   height: 100%;
   display: flex;
