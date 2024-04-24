@@ -1,12 +1,16 @@
 <template>
-  <div class="grid-container">
-    <Product
-      v-for="product in products"
-      :key="product.id"
-      :imageUrl="product.originalImage.url"
-      :title="product.name"
-      :price="product.price"
-    />
+  <div class="products">
+    <h2>Buy more Products</h2>
+    <div class="grid-container">
+      <Product
+        v-for="product in products"
+        :id="product.id"
+        :key="product.id"
+        :imageUrl="product.originalImage.url"
+        :title="product.name"
+        :price="product.price"
+      />
+    </div>
   </div>
 </template>
 
@@ -48,6 +52,10 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 20px;
-  padding: 20px;
+  margin-top: 20px;
+}
+.products {
+  margin-top: 20px;
+  padding: 0 10px 20px;
 }
 </style>

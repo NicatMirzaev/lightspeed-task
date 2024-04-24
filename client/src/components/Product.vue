@@ -1,5 +1,5 @@
 <template>
-  <div class="product-container">
+  <div class="product-container" @click="redirectToProduct">
     <div class="a-card product-card">
       <img class="product-image" :src="imageUrl" />
       <div class="product-body">
@@ -17,9 +17,15 @@
 export default {
   name: "product-item",
   props: {
+    id: Number,
     imageUrl: String,
     title: String,
     price: Number,
+  },
+  methods: {
+    redirectToProduct() {
+      window.Ecwid?.openPage("product", { id: this.id });
+    },
   },
 };
 </script>

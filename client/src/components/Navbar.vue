@@ -36,6 +36,8 @@ const ecommerce = new Ecommerce({
   storeLocationPath: "/store",
 });
 
+console.log(ecommerce);
+
 export default {
   name: "navbar-item",
   methods: {
@@ -64,7 +66,10 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .logo {
   font-size: 1.5rem;

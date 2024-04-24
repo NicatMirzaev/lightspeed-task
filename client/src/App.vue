@@ -1,10 +1,12 @@
 <template>
   <Navbar />
-  <router-view v-slot="{ Component }">
-    <keep-alive>
-      <component :is="Component" />
-    </keep-alive>
-  </router-view>
+  <div class="container">
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
+  </div>
 </template>
 
 <script>
@@ -20,5 +22,12 @@ export default {
 <style>
 .ec-footer {
   display: none;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

@@ -1,13 +1,9 @@
 <template>
-  <Products />
+  <h1>Home</h1>
 </template>
 
 <script>
-import Products from "@/components/Products.vue";
 export default {
   name: "home-view",
-  components: {
-    Products,
-  },
 };
 </script>

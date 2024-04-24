@@ -39,8 +39,7 @@ function injectEcwidProductBrowser(storeId) {
   );
   window.Ecwid.OnPageLoaded.add(function (page) {
     if (page.type === "CART") {
-      const footerElement = document.querySelector(".ec-footer");
-      const parentElement = footerElement.parentElement;
+      const ecwidElement = document.querySelector(".ecwid");
 
       // Create the component element
       const componentElement = document.createElement("div");
@@ -48,7 +47,12 @@ function injectEcwidProductBrowser(storeId) {
       renderComponent(componentElement, {});
 
       // Insert the component before the footer element
-      parentElement.insertBefore(componentElement, footerElement);
+      ecwidElement.parentNode.insertBefore(
+        componentElement,
+        ecwidElement.nextSibling,
+      );
+    } else {
+      document.querySelector(".products").remove();
     }
   });
 }
