@@ -52,7 +52,7 @@ function injectEcwidProductBrowser(storeId) {
         ecwidElement.nextSibling,
       );
     } else {
-      document.querySelector(".products").remove();
+      document.querySelector(".products")?.remove();
     }
   });
 }

@@ -8,7 +8,9 @@
         </h5>
         <div class="text-default text-center muted">${{ price }}</div>
       </div>
-      <button class="btn btn-primary buy-now-button">Buy now</button>
+      <button class="btn btn-primary buy-now-button" @click.stop="addToCart">
+        Buy now
+      </button>
     </div>
   </div>
 </template>
@@ -25,6 +27,10 @@ export default {
   methods: {
     redirectToProduct() {
       window.Ecwid?.openPage("product", { id: this.id });
+    },
+    addToCart() {
+      console.log(window.Ecwid?.Cart.get((cart) => console.log(cart)));
+      // window.Ecwid?.Cart.addProduct(this.id);
     },
   },
 };
