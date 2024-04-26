@@ -19,6 +19,7 @@
           >Account</span
         >
       </li>
+      <li><router-link to="/settings">Settings</router-link></li>
       <div
         data-layout="SMALL_ICON_COUNTER"
         class="ec-cart-widget"
@@ -35,8 +36,6 @@ const ecommerce = new Ecommerce({
   storeId: 101560752,
   storeLocationPath: "/store",
 });
-
-console.log(ecommerce);
 
 export default {
   name: "navbar-item",

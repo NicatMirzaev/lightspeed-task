@@ -28,8 +28,6 @@ export default {
   },
   mounted() {
     this.fetchProducts();
-
-    console.log("mounted");
   },
   methods: {
     fetchProducts() {

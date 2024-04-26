@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { useToast } from "vue-toast-notification";
+
 export default {
   name: "product-item",
   props: {
@@ -29,8 +31,17 @@ export default {
       window.Ecwid?.openPage("product", { id: this.id });
     },
     addToCart() {
-      console.log(window.Ecwid?.Cart.get((cart) => console.log(cart)));
-      // window.Ecwid?.Cart.addProduct(this.id);
+      window.Ecwid?.Cart.addProduct(
+        this.id,
+        function (success, product, cart, error) {
+          const $toast = useToast();
+          if (success) {
+            $toast.success("Product added to cart", { position: "top-right" });
+          } else {
+            $toast.error(error, { position: "top-right" });
+          }
+        },
+      );
     },
   },
 };
