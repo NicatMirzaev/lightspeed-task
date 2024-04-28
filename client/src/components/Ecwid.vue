@@ -39,18 +39,21 @@ function injectEcwidProductBrowser(storeId) {
   );
   window.Ecwid.OnPageLoaded.add(function (page) {
     if (page.type === "CART") {
-      const ecwidElement = document.querySelector(".ecwid");
+      const show = localStorage.getItem("show_widget");
+      if (show === "true") {
+        const ecwidElement = document.querySelector(".ecwid");
 
-      // Create the component element
-      const componentElement = document.createElement("div");
+        // Create the component element
+        const componentElement = document.createElement("div");
 
-      renderComponent(componentElement, {});
+        renderComponent(componentElement, {});
 
-      // Insert the component before the footer element
-      ecwidElement.parentNode.insertBefore(
-        componentElement,
-        ecwidElement.nextSibling,
-      );
+        // Insert the component before the footer element
+        ecwidElement.parentNode.insertBefore(
+          componentElement,
+          ecwidElement.nextSibling,
+        );
+      }
     } else {
       document.querySelector(".products")?.remove();
     }
