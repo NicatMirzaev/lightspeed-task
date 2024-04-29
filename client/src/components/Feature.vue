@@ -60,7 +60,8 @@ import { ref } from "vue";
 export default {
   name: "feature-card",
   setup() {
-    const checked = ref(false);
+    const show = localStorage.getItem("show_widget");
+    const checked = ref(!show || show === "true" ? true : false);
 
     const handleCheckboxChange = () => {
       localStorage.setItem("show_widget", checked.value.toString());
